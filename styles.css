@@ -1,0 +1,953 @@
+@font-face {
+  font-family: "Railroad";
+  src: url("assets/fonts/RailroadGothicCC.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Metrophobic";
+  src: url("assets/fonts/Metrophobic-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  --blue: #2600ff;
+  --ink: #11104a;
+  --muted: #57508a;
+  --paper: #efefef;
+  --panel: #d9d9d9;
+  --lavender: #c7baf9;
+  --white: #ffffff;
+  --radius: 28px;
+  --wrap: 1280px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Metrophobic", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.15;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrap {
+  width: min(calc(100% - 112px), var(--wrap));
+  margin: 0 auto;
+}
+
+.site-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 72px 0 34px;
+}
+
+.logo {
+  color: var(--blue);
+  font-family: "Railroad", Impact, sans-serif;
+  font-size: clamp(44px, 5vw, 68px);
+  line-height: .82;
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  gap: 34px;
+  align-items: center;
+  color: var(--blue);
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.nav a {
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s ease;
+}
+
+.nav a:hover::after,
+.nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(280px, 410px) minmax(360px, 520px) minmax(140px, 190px);
+  gap: clamp(36px, 5vw, 84px);
+  align-items: center;
+  min-height: 590px;
+}
+
+.eyebrow {
+  color: var(--ink);
+  font-size: 16px;
+  margin: 0 0 6px;
+}
+
+.title {
+  margin: 0;
+  color: var(--blue);
+  font-family: "Railroad", Impact, sans-serif;
+  font-size: clamp(42px, 5.4vw, 78px);
+  line-height: .88;
+  text-transform: uppercase;
+}
+
+.copy {
+  color: var(--ink);
+  font-size: clamp(18px, 1.7vw, 24px);
+  line-height: 1.08;
+  letter-spacing: .04em;
+  margin: 18px 0 0;
+}
+
+.hero-home .copy,
+.about-hero .copy {
+  font-size: 20px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 148px;
+  min-height: 42px;
+  padding: 8px 26px;
+  border: 3px solid var(--blue);
+  border-radius: 999px;
+  color: var(--blue);
+  background: transparent;
+  font-family: "Railroad", Impact, sans-serif;
+  font-size: 20px;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: background .18s ease, color .18s ease, box-shadow .18s ease;
+}
+
+.button:hover {
+  background: var(--blue);
+  color: var(--white);
+  box-shadow: 0 0 0 3px rgba(38, 0, 255, .12);
+}
+
+.hero .button {
+  margin-top: 42px;
+}
+
+.portrait {
+  aspect-ratio: 1 / 1.35;
+  border-radius: 0 0 50% 50% / 0 0 30% 30%;
+  overflow: hidden;
+}
+
+.portrait.is-round {
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-home {
+  align-items: start;
+}
+
+.hero-home .portrait {
+  width: min(44vw, 600px);
+  height: 690px;
+  align-self: start;
+  margin-top: -128px;
+}
+
+.hero-home .portrait img {
+  object-position: center top;
+}
+
+.hero-home .portrait img {
+  filter: none;
+}
+
+.skills-stack {
+  justify-self: end;
+  color: var(--blue);
+  text-align: center;
+}
+
+.mini-heading,
+.section-title,
+.card-title,
+.job-title,
+.project-title,
+.project-heading {
+  color: var(--blue);
+  font-family: "Railroad", Impact, sans-serif;
+  line-height: .95;
+  text-transform: uppercase;
+}
+
+.skills-stack .mini-heading {
+  font-size: 24px;
+  margin-bottom: 26px;
+}
+
+.tool-icons {
+  display: grid;
+  gap: 24px;
+  justify-items: center;
+}
+
+.tool-icons img {
+  max-height: 55px;
+  max-width: 116px;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 56px;
+  padding: 60px 0 72px;
+}
+
+.service img {
+  height: 46px;
+  width: 46px;
+  margin-bottom: 24px;
+}
+
+.card-title {
+  margin: 0 0 10px;
+  font-size: 26px;
+}
+
+.small-copy {
+  margin: 0;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.06;
+}
+
+.band {
+  background: var(--panel);
+  margin-top: 84px;
+  padding: 96px 0;
+}
+
+.section-title {
+  margin: 0 0 48px;
+  text-align: center;
+  font-size: clamp(44px, 5vw, 68px);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+}
+
+.project-card.featured,
+.project-card.wide {
+  grid-column: 1 / -1;
+}
+
+.project-card {
+  display: grid;
+  gap: 18px;
+}
+
+.project-media {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #d7d7d7;
+}
+
+.project-media img {
+  width: 100%;
+  aspect-ratio: 1.74 / 1;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.project-card:hover .project-media img {
+  transform: scale(1.025);
+}
+
+.project-meta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: end;
+}
+
+.project-kicker {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.project-title {
+  margin: 0;
+  font-size: clamp(30px, 3.2vw, 46px);
+}
+
+.manifesto {
+  padding: 100px 0 150px;
+  text-align: center;
+}
+
+.manifesto p {
+  margin: 0 0 16px;
+  font-size: clamp(22px, 2vw, 32px);
+}
+
+.manifesto h2 {
+  max-width: 960px;
+  margin: 0 auto;
+  color: var(--blue);
+  font-family: "Railroad", Impact, sans-serif;
+  font-size: clamp(46px, 5.6vw, 82px);
+  line-height: .95;
+  text-transform: uppercase;
+}
+
+.site-footer {
+  background: var(--blue);
+  color: var(--white);
+  padding: 94px 0 82px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.footer-kicker {
+  margin: 0 0 10px;
+  font-size: 26px;
+}
+
+.footer-title {
+  margin: 0;
+  font-family: "Railroad", Impact, sans-serif;
+  font-size: clamp(46px, 5vw, 74px);
+  line-height: .98;
+  text-transform: uppercase;
+}
+
+.footer-info {
+  display: grid;
+  gap: 22px;
+  justify-content: end;
+  text-align: right;
+  padding-top: 18px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  align-items: baseline;
+}
+
+.info-row strong {
+  font-family: "Railroad", Impact, sans-serif;
+  font-size: 26px;
+  text-transform: uppercase;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+
+.footer-nav strong {
+  font-family: "Railroad", Impact, sans-serif;
+  font-size: 26px;
+}
+
+.footer-nav a {
+  position: relative;
+  padding-left: 0;
+}
+
+.footer-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s ease;
+}
+
+.footer-nav a:hover::after,
+.footer-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 24px;
+  margin-top: 42px;
+}
+
+.socials img {
+  width: 51px;
+  height: 51px;
+  transition: transform .24s ease, filter .24s ease;
+}
+
+.socials a:hover img,
+.socials a:focus-visible img {
+  transform: scale(1.08) rotate(-3deg);
+  filter: drop-shadow(0 8px 0 rgba(17, 16, 74, .24));
+}
+
+.page-hero {
+  padding: 74px 0 42px;
+}
+
+.about-hero {
+  display: grid;
+  grid-template-columns: minmax(420px, 560px) minmax(420px, 620px);
+  gap: clamp(56px, 8vw, 130px);
+  align-items: center;
+  min-height: 650px;
+}
+
+.about-hero .copy {
+  max-width: 540px;
+}
+
+.resume {
+  display: grid;
+  grid-template-columns: 1.2fr 1px .9fr;
+  gap: 72px;
+  padding: 92px 0 140px;
+}
+
+.rule {
+  background: #cbc5e8;
+}
+
+.timeline {
+  display: grid;
+  gap: 58px;
+}
+
+.job {
+  display: grid;
+  grid-template-columns: 104px 1fr;
+  gap: 34px;
+  align-items: start;
+}
+
+.years {
+  display: grid;
+  place-items: center;
+  min-height: 82px;
+  border-radius: 8px;
+  background: var(--lavender);
+  color: var(--blue);
+  font-family: "Railroad", Impact, sans-serif;
+  font-size: 34px;
+  line-height: .82;
+}
+
+.job-title {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-size: 34px;
+}
+
+.job p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.08;
+}
+
+.side-panel {
+  text-align: center;
+}
+
+.side-panel .tool-icons {
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  margin: 54px 0 60px;
+}
+
+.side-panel .tool-icons img {
+  margin: auto;
+}
+
+.thin-line {
+  height: 1px;
+  background: #cbc5e8;
+  margin: 0 0 66px;
+}
+
+.language {
+  margin-top: 38px;
+}
+
+.language strong {
+  display: block;
+  font-family: "Railroad", Impact, sans-serif;
+  font-size: 34px;
+  line-height: .95;
+  text-transform: uppercase;
+}
+
+.project-hero {
+  padding-top: 54px;
+}
+
+.case-cover {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.case-cover img {
+  width: 100%;
+  aspect-ratio: 1.74 / 1;
+  object-fit: cover;
+}
+
+.case-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  color: var(--blue);
+  font-family: "Railroad", Impact, sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  margin-top: 18px;
+}
+
+.case-meta small {
+  display: block;
+  color: var(--muted);
+  font-family: "Metrophobic", Arial, sans-serif;
+  font-size: 13px;
+  text-transform: none;
+}
+
+.case-intro {
+  max-width: 900px;
+  margin: 56px auto 72px;
+  text-align: center;
+}
+
+.case-intro .project-heading {
+  margin: 0 0 24px;
+  font-size: clamp(36px, 4.2vw, 58px);
+}
+
+.case-intro p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.case-section {
+  padding: 34px 0;
+}
+
+.case-section.center {
+  text-align: center;
+}
+
+.case-section .project-heading {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: clamp(36px, 4vw, 54px);
+}
+
+.case-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.case-images.single {
+  grid-template-columns: 1fr;
+}
+
+.case-images img,
+.image-panel {
+  width: 100%;
+  border-radius: 18px;
+  background: var(--lavender);
+}
+
+.process {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.process span {
+  padding: 10px 22px;
+  background: #dad8e4;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.key-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 42px;
+  margin: 48px auto;
+  max-width: 860px;
+  text-align: center;
+}
+
+.key-points img {
+  height: 52px;
+  margin: 0 auto 18px;
+  width: auto;
+}
+
+.other-projects {
+  padding: 72px 0 96px;
+}
+
+.other-projects .project-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.other-projects .button {
+  margin: 36px auto 0;
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-image-reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity .8s ease, transform .8s ease;
+  transition-delay: .3s;
+}
+
+.project-image-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .62s ease, transform .62s ease;
+}
+
+.stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger.is-visible > *:nth-child(2) {
+  transition-delay: .22s;
+}
+
+.stagger.is-visible > *:nth-child(3) {
+  transition-delay: .44s;
+}
+
+.stagger.is-visible > *:nth-child(4) {
+  transition-delay: .66s;
+}
+
+.fade-icons > * {
+  opacity: 0;
+  transform: scale(.94);
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+.fade-icons.is-visible > * {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.fade-icons.is-visible > *:nth-child(2) {
+  transition-delay: .2s;
+}
+
+.fade-icons.is-visible > *:nth-child(3) {
+  transition-delay: .4s;
+}
+
+.fade-icons.is-visible > *:nth-child(4) {
+  transition-delay: .6s;
+}
+
+.fade-icons.is-visible > *:nth-child(5) {
+  transition-delay: .8s;
+}
+
+.side-panel .tool-icons img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 8px 0 rgba(38, 0, 255, .14));
+}
+
+@media (min-width: 981px) {
+  body[data-page="home"] .site-header {
+    position: absolute;
+    z-index: 3;
+    top: 74px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+  }
+
+  body[data-page="home"] .nav {
+    padding-top: 31px;
+  }
+
+  .hero-home {
+    min-height: 780px;
+    grid-template-columns: 330px 418px 180px;
+    justify-content: space-between;
+    gap: 42px;
+    align-items: start;
+  }
+
+  .hero-home > div:first-child {
+    padding-top: 282px;
+  }
+
+  .hero-home .copy {
+    max-width: 315px;
+  }
+
+  .hero-home .portrait {
+    width: 418px;
+    height: 720px;
+    border-radius: 0 0 209px 209px / 0 0 209px 209px;
+    margin-top: 0;
+  }
+
+  .hero-home .skills-stack {
+    padding-top: 342px;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 980px) {
+  .wrap {
+    width: min(calc(100% - 48px), var(--wrap));
+  }
+
+  .site-header {
+    align-items: flex-start;
+    padding-top: 42px;
+  }
+
+  .nav {
+    gap: 18px;
+    font-size: 16px;
+  }
+
+  .hero,
+  .about-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .hero {
+    gap: 36px;
+    padding: 22px 0 36px;
+  }
+
+  .hero .portrait {
+    width: min(100%, 430px);
+    margin: 0 auto;
+  }
+
+  .hero-home .portrait {
+    height: auto;
+    aspect-ratio: 1 / 1.35;
+    border-radius: 0 0 50% 50% / 0 0 37% 37%;
+    margin-top: 0;
+  }
+
+  .skills-stack {
+    justify-self: stretch;
+    text-align: left;
+  }
+
+  .tool-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 26px;
+  }
+
+  .services,
+  .project-grid,
+  .case-images,
+  .resume,
+  .footer-grid,
+  .other-projects .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services {
+    gap: 32px;
+  }
+
+  .rule {
+    display: none;
+  }
+
+  .footer-info,
+  .footer-nav,
+  .socials {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .info-row {
+    justify-content: flex-start;
+  }
+
+  .key-points {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  body {
+    font-size: 16px;
+  }
+
+  .wrap {
+    width: min(calc(100% - 30px), var(--wrap));
+  }
+
+  .site-header {
+    gap: 22px;
+    flex-direction: column;
+    padding: 34px 0 20px;
+  }
+
+  .logo {
+    font-size: 42px;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .copy {
+    font-size: 18px;
+  }
+
+  .project-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .button {
+    width: fit-content;
+  }
+
+  .manifesto {
+    padding: 70px 0 92px;
+  }
+
+  .band {
+    margin-top: 50px;
+    padding: 64px 0;
+  }
+
+  .footer-grid,
+  .resume {
+    gap: 38px;
+  }
+
+  .site-footer {
+    padding: 68px 0;
+  }
+
+  .info-row {
+    display: grid;
+    gap: 6px;
+  }
+
+  .job {
+    grid-template-columns: 86px 1fr;
+    gap: 20px;
+  }
+
+  .years {
+    min-height: 74px;
+    font-size: 28px;
+  }
+
+  .job-title {
+    font-size: 26px;
+  }
+
+  .case-meta {
+    display: grid;
+  }
+}
