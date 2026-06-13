@@ -152,13 +152,12 @@ a {
   font-size: 20px;
   line-height: 1;
   text-transform: uppercase;
-  transition: background .18s ease, color .18s ease, box-shadow .18s ease;
+  transition: background .18s ease-in-out, color .18s ease-in-out;
 }
 
 .button:hover {
   background: var(--blue);
   color: var(--white);
-  box-shadow: 0 0 0 3px rgba(38, 0, 255, .12);
 }
 
 .hero .button {
@@ -299,11 +298,11 @@ a {
   width: 100%;
   aspect-ratio: 1.74 / 1;
   object-fit: cover;
-  transition: transform .35s ease;
+  transition: transform .55s ease-in-out;
 }
 
 .project-card:hover .project-media img {
-  transform: scale(1.025);
+  transform: scale(1.085);
 }
 
 .project-meta {
@@ -385,6 +384,10 @@ a {
   align-items: baseline;
 }
 
+.info-row span {
+  white-space: nowrap;
+}
+
 .info-row strong {
   font-family: "Railroad", Impact, sans-serif;
   font-size: 26px;
@@ -436,13 +439,12 @@ a {
 .socials img {
   width: 51px;
   height: 51px;
-  transition: transform .24s ease, filter .24s ease;
+  transition: transform .22s ease-in-out;
 }
 
 .socials a:hover img,
 .socials a:focus-visible img {
-  transform: scale(1.08) rotate(-3deg);
-  filter: drop-shadow(0 8px 0 rgba(17, 16, 74, .24));
+  transform: scale(1.1);
 }
 
 .page-hero {
@@ -556,15 +558,44 @@ a {
   object-fit: cover;
 }
 
+.case-cover-with-meta img {
+  display: block;
+}
+
 .case-meta {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   gap: 24px;
   color: var(--blue);
   font-family: "Railroad", Impact, sans-serif;
   font-size: 22px;
   text-transform: uppercase;
   margin-top: 18px;
+}
+
+.case-meta > div:last-child {
+  margin-left: auto;
+  text-align: right;
+}
+
+.case-meta-overlay {
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  bottom: 60px;
+  margin-top: 0;
+  z-index: 2;
+}
+
+.healing-cover .case-meta-overlay,
+.healing-cover .case-meta-overlay small {
+  color: #fff;
+}
+
+.case-cover-light-meta .case-meta-overlay,
+.case-cover-light-meta .case-meta-overlay small {
+  color: #fff;
 }
 
 .case-meta small {
@@ -577,7 +608,7 @@ a {
 
 .case-intro {
   max-width: 900px;
-  margin: 56px auto 72px;
+  margin: 64px auto 88px;
   text-align: center;
 }
 
@@ -593,15 +624,29 @@ a {
 }
 
 .case-section {
-  padding: 34px 0;
+  padding: 54px 0;
 }
 
 .case-section.center {
   text-align: center;
 }
 
+.case-section.center p {
+  max-width: 900px;
+  margin: 0 auto 18px;
+}
+
+.case-section.center .case-images {
+  margin-top: 58px;
+}
+
+.case-note {
+  margin: -8px 0 30px;
+  text-align: center;
+}
+
 .case-section .project-heading {
-  margin: 0 0 24px;
+  margin: 0 0 30px;
   text-align: center;
   font-size: clamp(36px, 4vw, 54px);
 }
@@ -623,6 +668,11 @@ a {
   background: var(--lavender);
 }
 
+.case-images-equal img {
+  height: clamp(300px, 30vw, 460px);
+  object-fit: cover;
+}
+
 .process {
   display: flex;
   justify-content: center;
@@ -632,10 +682,26 @@ a {
 }
 
 .process span {
+  position: relative;
   padding: 10px 22px;
   background: #dad8e4;
   color: var(--muted);
   font-size: 14px;
+}
+
+.process span:not(:last-child) {
+  margin-right: 35px;
+}
+
+.process span:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(100% + 18px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 17px;
+  height: 15px;
+  background: url("assets/icons/arrow-1.svg") center / contain no-repeat;
 }
 
 .key-points {
@@ -647,10 +713,39 @@ a {
   text-align: center;
 }
 
+.key-points-four {
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 980px;
+}
+
 .key-points img {
   height: 52px;
   margin: 0 auto 18px;
   width: auto;
+}
+
+.case-checklist {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  margin: 0 auto 54px;
+  padding: 0;
+  list-style: none;
+}
+
+.case-checklist li {
+  min-width: min(100%, 520px);
+  padding: 8px 18px;
+  background: #dedee1;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.case-checklist li::before {
+  content: "✓ ";
+  color: var(--muted);
+  font-weight: 700;
 }
 
 .other-projects {
@@ -659,6 +754,19 @@ a {
 
 .other-projects .project-grid {
   grid-template-columns: repeat(3, 1fr);
+}
+
+.other-projects .project-card {
+  text-align: center;
+}
+
+.other-projects .project-card > div {
+  display: grid;
+  justify-items: center;
+}
+
+.other-projects .project-media img {
+  aspect-ratio: 403 / 271;
 }
 
 .other-projects .button {
@@ -741,11 +849,6 @@ a {
 
 .fade-icons.is-visible > *:nth-child(5) {
   transition-delay: .8s;
-}
-
-.side-panel .tool-icons img:hover {
-  transform: scale(1.08);
-  filter: drop-shadow(0 8px 0 rgba(38, 0, 255, .14));
 }
 
 @media (min-width: 981px) {
@@ -947,7 +1050,17 @@ a {
     font-size: 26px;
   }
 
-  .case-meta {
+  .case-meta:not(.case-meta-overlay) {
     display: grid;
+  }
+
+  .case-meta-overlay {
+    left: 24px;
+    right: 24px;
+    bottom: 28px;
+  }
+
+  .case-images-equal img {
+    height: auto;
   }
 }
